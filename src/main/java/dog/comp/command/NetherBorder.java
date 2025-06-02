@@ -12,6 +12,7 @@ import net.minecraft.text.Text;
 public class NetherBorder {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(CommandManager.literal("netherborder")
+                .requires(source -> source.hasPermissionLevel(2)) // Only operators (permission level 2+) can use
                 .then(CommandManager.argument("pos", ColumnPosArgumentType.columnPos())
                         .executes(context -> {
                             ColumnPos pos = ColumnPosArgumentType.getColumnPos(context, "pos");
